@@ -72,11 +72,30 @@ Plug 'patstockwell/vim-monokai-tasty'
 Plug 'kmszk/skyhawk'
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'leafgarland/typescript-vim'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'https://github.com/Quramy/tsuquyomi.git', {'do': 'make'}
+Plug 'https://github.com/Shougo/vimproc.vim.git', { 'do' : 'make' }
+Plug 'https://github.com/Quramy/tsuquyomi.git'
+Plug 'https://github.com/vim-syntastic/syntastic.git'
+Plug 'https://github.com/vim-scripts/vim-auto-save.git'
 
 call plug#end()
 
 colorscheme skyhawk
 
 :set tags=./tags
+
+"Synatastic configuration"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"Synatic integration with tsuquyomi"
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi'] 
+
+"vim-auto-save configuration"
+let g:auto_save = 0 
